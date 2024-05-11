@@ -1,35 +1,37 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import CreateBlog from "./create/createBlog";
+import Allpost from "./Headernavbar/allpost";
+import Login from "./loginsignup/login";
+import Signup from "./loginsignup/signup";
+import AdminLogin from "./loginsignup/adminlogin";
+import Singlepost from "./Headernavbar/onepost";
+import Admin from "./bloglistcardlist/Admin";
+import CardList from "./bloglistcardlist/CardList";
+import BlogList from "./bloglistcardlist/BlogList";
+import ProfilePage from "./create/profilePage";
+import EditProfile from "./create/editProfile";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Router>
+        <Routes>
+          <Route exact path="/createblog" element={<CreateBlog />} />
+          <Route exact path="/" element={<Allpost />} />
+          <Route exact path="/post/:id" element={<Singlepost />} />
+          <Route exact path="/signup" element={<Signup />} />
+          <Route exact path="/login" element={<Login />} />
+          <Route exact path="/userprofile" element={<ProfilePage />} />
+          <Route exact path="/editprofile" element={<EditProfile />} />
+          <Route exact path="/adminlogin" element={<AdminLogin />} />
+          <Route path="/admin" element={<Admin />}>
+            <Route path="manage-users" element={<CardList />} />
+            <Route path="manage-posts" element={<BlogList />} />
+          </Route>
+        </Routes>
+      </Router>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

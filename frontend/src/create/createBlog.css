@@ -29,6 +29,7 @@ body {
     border: 1px solid #ccc;
     border-radius: 20px;
     color: #2f2f2f;
+    background-color: white;
   }
   
   input[type="text"] {
