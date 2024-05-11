@@ -126,3 +126,4 @@ localhost will open at port no. 5173
 
 # Note :
 Feel free to adjust the content as needed and add any additional information you think would be helpful!
+# Completed the project
